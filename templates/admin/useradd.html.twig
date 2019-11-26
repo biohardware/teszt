@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+<form method="post" action="{{ path('admin_login') }}">
+    <input type="text" id="login" name="username" placeholder="username">
+    <input type="text" id="password" name="userpass" placeholder="password">
+    <input type="submit" value="Hozzáadás">
+</form>
+
+
+
+
+{% endblock %}

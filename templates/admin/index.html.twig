@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <p>Sikeres bejelentkezés!</p>
+    {% if user is defined %}
+        <h1>Hello {{ user.name }}! ✅</h1>
+    {% endif %}
+    {% if users is defined %}
+        <table border="1">
+            <tr>
+                <td>ID</td>
+                <td>NÉV</td>
+                <td>last login</td>
+                <td>DUMP</td>
+            </tr>
+        {% for useres in users %}
+            <tr>
+                <td>{{ useres.id }}</td>
+                <td>{{ useres.name }}</td>
+                <td>{{ useres.LastLogin|date('Y-m-d') }}</td>
+                <td>{{ dump(useres) }}</td>
+            </tr>
+        {% endfor %}
+
+        </table>
+
+    {% endif %}
+
+    <p><a href="{{ path('admin_all_users') }}">Összes felhasználó</a></p>
+    <p><a href="{{ path('add_new_user') }}">Új felhasználó</a></p>
+    <p><a href="{{ path('admin_user_show', {'id': 2}) }}">Profil</a></p>
+    <p><a href="{{ path('admin_logout') }}">Kijelentkezés</a></p>
+{% endblock %}
